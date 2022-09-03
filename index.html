@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The News Glory</title>
+  <!-- daisi ui link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- bootsrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  
+  </head>
+  <body>
+    <!-- navbar -->
+    <header class="container mx-auto">
+      <div class="navbar bg-base-100 bg-gray-100 mt-4">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl text-gray-50 font-bold bg-blue-500">The News Glory</a>
+        </div>
+
+        <div class="flex-none">
+          <ul class="menu menu-horizontal p-0">
+            <li class="text-blue-600 text-bold"><a>Home</a></li>
+             <li class="text-blue-600 text-bold"><a>Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full">
+            <img src="https://placeimg.com/80/80/people" />
+          </div>
+        </label>
+      </div>
+    </div>
+    </header>
+     <!-- View count section -->
+     <div id="item-found" class="container mx-auto mt-4">
+      <input type="text" placeholder="News Found" class="input input-bordered input-primary w-full max-w-xs" />
+     </div>
+  
+     <!-- Modal -->
+
+    <main>
+        <!-- bottom border -->
+        <section class="container mx-auto mt-8">
+            <div class="h-5 border-b-2 border-silver-600  text-center ">
+            </div>
+        </section>
+        <!-- categories section begin -->
+        <section >
+            <div class="navbar-center hidden lg:flex ">
+                  <ul id="news-container"  class="menu menu-horizontal p-4 mx-auto gap-12 text-lg text-indigo-700 font-bold">
+                    
+                  </ul>
+                </div>
+                
+              </div>
+
+        </section>
+
+
+
+    <!-- All categories -->
+    <!-- <div id="allCategories" class="flex space-x-4"></div> -->
+    <div id="allCategories" class="flex justify-between container mx-auto mb-4 text-2xl text-silver-700 text-bold bg-indigo-200"></div>
+    
+    <section id="news-details-container" class="container mx-auto p-12x grid place-content-center"> 
+    </section>
+
+</main>
+
+
+    <!-- links -->
+   
+    <script src="js/index.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  </body>
+</html>
