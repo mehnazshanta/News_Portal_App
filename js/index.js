@@ -19,7 +19,7 @@ const startApp = () => {
 // display defualt news
 const displayDefaultNews = () => {
   if (counter == 0) {
-    getAllNewsByCategoryId(DEFAULT_CATEGORY_ID, DEFAULT_CATEGORY_NAME, true);
+    getAllMostViewedNewsByCategoryId(DEFAULT_CATEGORY_ID, DEFAULT_CATEGORY_NAME, true);
   }
 };
 
@@ -60,7 +60,7 @@ const displayAllCategories = (categories) => {
 };
 
 // All news by id
-const getAllNewsByCategoryId = async (
+const getAllMostViewedNewsByCategoryId= async (
   categoryId,
   categoryName,
   isFirstTimeLoad
@@ -68,6 +68,8 @@ const getAllNewsByCategoryId = async (
   const res = await fetch(`${GET_ALL_NEWS}/${categoryId}`);
   const data = await res.json();
   const allNews = data.data;
+  // The most viewed news at the top
+  allNews.sort((n1, n2) => (n1.total_view < n2.total_view) ? 1 : -1);
   if (isFirstTimeLoad != true) {
     counter = allNews.length;
     displayItemFound(categoryName, counter);
@@ -91,7 +93,8 @@ const displayNewsDetails = (allNews) => {
                 <h2 class="card-title">${news.title}</h2>
                 <p>"${news.details}"</p>
                 <div class="card-actions justify-end">
-                <button class="btn btn-primary">Details</button>
+                <p>View count: ${news.total_view}</p>
+                <button class="btn btn-primary" onclick="displayModal('${news.title}', '${news.image_url}')">Details</button>
                 </div>
               </div>
               <div class="container mb-4">
@@ -102,7 +105,6 @@ const displayNewsDetails = (allNews) => {
         `;
     newsDetailsContainer.appendChild(newsDetailsContainerDiv);
   });
-  document.getElementById('my-modal').checked = true;
 };
 
 // Single news
@@ -113,6 +115,21 @@ const getSingleNewsByNewsId = async (newsId) => {
   displaySingleNews(data.data);
 };
 
+// Display news inside modal
+const displayModal = (title, image) => {
+  const newsModalEl = document.getElementById('news-modal-box');
+  newsModalEl.innerHTML = `
+  <div class="modal-box">
+  <h3 class="font-bold text-lg">${title}</h3>
+  <img src="${image}" />
+  <div class="modal-action">
+    <label for="news-modal" class="btn">OK</label>
+  </div>
+  </div>
+  `
+  document.getElementById('news-modal').checked = true;
+}
+
 // todo: make html elements
 
 const displaySingleNews = (news) => {
@@ -121,11 +138,5 @@ const displaySingleNews = (news) => {
 
   console.log(news);
 };
-
-// getAllNewsCategories(
-//   `https://openapi.programming-hero.com/api/news/categories`
-// );
-// getAllNewsCategories();
-getSingleNewsByNewsId("0282e0e58a5c404fbd15261f11c2ab6a");
 
 startApp();
