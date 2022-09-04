@@ -48,7 +48,7 @@ const displayAllCategories = (categories) => {
     singleButtonEl.setAttribute("id", category.category_id);
     singleButtonEl.setAttribute(
       "onclick",
-      `getAllNewsByCategoryId('${category.category_id}', '${category.category_name}', 'false')`
+      `getAllMostViewedNewsByCategoryId('${category.category_id}', '${category.category_name}', 'false')`
     );
     singleButtonEl.innerHTML = category.category_name;
 
